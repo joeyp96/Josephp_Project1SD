@@ -18,10 +18,8 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pylint
+        pip install google-generativeai 
+        pip install grpcio grpcio-tools
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
-    - name: Install dependencies
-      run: |
-         python -m pip install --upgrade pip
-         pip install flake8 pylint google-generativeai grpcio grpcio-tools
