@@ -46,7 +46,7 @@ model = genai.GenerativeModel(
 chat_session = model.start_chat(history=[])
 
 
-def create_resume(job_description: str, personal_description: str) -> str:
+def create_resume(job_desc: str, personal_desc: str) -> str:
     """Creates a resume using AI based on the provided job and personal descriptions."""
 
     prompt = f"""
@@ -54,10 +54,10 @@ def create_resume(job_description: str, personal_description: str) -> str:
     skills and job description provided.
 
     Job Description:
-    {job_description}
+    {job_desc}
 
     Personal Description:
-    {personal_description}
+    {personal_desc}
 
     Format the resume in a structured, professional way.
     """
@@ -79,7 +79,7 @@ def save_resume(resume_output: str) -> None:
 
 
 if __name__ == "__main__":
-    job_description = (
+    JOB_DESCRIPTION = (
         "Links Technology Solutions is looking for a Software Developer to join their team! "
         "This role requires a strong foundation in .NET development with a focus on building and "
         "maintaining robust applications within an Agile team environment. "
@@ -89,7 +89,7 @@ if __name__ == "__main__":
         "• Participate in daily standups."
     )
 
-    personal_description = """\
+    PERSONAL_DESCRIPTION = """\
     My name is Joey, and I'm set to graduate in Spring 2025 with a Bachelor's degree in Computer Science 
     from Bridgewater State University, Bridgewater, MA. My skills include Java programming, 
     full-stack web development, experience with databases, and knowledge of computer networks 
@@ -106,6 +106,6 @@ if __name__ == "__main__":
     I am passionate about technology and excited to take my first steps into the software engineering industry.
     """
 
-    resume_text = create_resume(job_description, personal_description)
+    resume_text = create_resume(JOB_DESCRIPTION, PERSONAL_DESCRIPTION)
     save_resume(resume_text)
     print(resume_text)
