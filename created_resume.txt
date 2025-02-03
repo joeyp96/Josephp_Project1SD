@@ -1,0 +1,58 @@
+```markdown
+# Joey [Last Name]
+[Phone Number] | [Email Address] | [LinkedIn Profile URL] | [GitHub Profile URL]
+
+**Summary**
+
+Highly motivated and detail-oriented Computer Science student at Bridgewater State University, graduating Spring 2025, eager to contribute to a dynamic team as a Software Developer. Possessing a strong foundation in programming principles, database management, and full-stack web development.  Actively expanding knowledge in emerging fields such as computer forensics and AI.  Seeking an opportunity to apply academic knowledge and project experience to build robust and scalable applications, specifically within the .NET environment.
+
+**Education**
+
+**Bridgewater State University, Bridgewater, MA**
+* Bachelor of Science in Computer Science, Expected Graduation: May 2025
+* Relevant Coursework: Data Structures and Algorithms, Database Management Systems, Operating Systems, Computer Networks, Web Development 
+
+**Skills**
+
+* **Programming Languages:** Java, JavaScript, HTML, CSS
+* **Frameworks/Libraries:**  Bootstrap, Node.js
+* **Databases:** PostgreSQL
+* **Concepts:**  Full Stack Web Development, Computer Networks, Operating Systems, Agile Methodologies (Exposure), File Transfer Protocols
+* **Emerging Fields:** Computer Forensics (Learning), Data Mining (Learning), Modern AI Systems (Learning)
+
+**Projects**
+
+**Full-Stack User Authentication Website**
+* Developed a complete full-stack website incorporating user authentication for secure login.
+* Utilized HTML, CSS (with Bootstrap framework), and JavaScript for front-end design.
+* Implemented server-side logic using Node.js and database interactions with PostgreSQL.
+* Demonstrated ability to create interactive user experiences and manage sensitive information.
+
+**Pokemon Database and Website**
+* Designed and implemented a database to store detailed information for the original 151 Pokemon.
+* Populated database with data including Pokemon names and their statistical attributes.
+* Built a user-friendly front-end website to effectively display the database information.
+* Utilized database knowledge to create a visually accessible and navigable display of stored information.
+
+**File Transfer Protocol (FTP) Program**
+* Created a functional FTP client and server program using Java for file transfer over a network.
+* Implemented network socket programming to establish communication between client and server.
+* Demonstrated ability to develop multi-part programs incorporating networking and file management.
+
+**Experience**
+
+*No professional experience*
+
+**Awards and Activities**
+
+* [List any relevant awards, scholarships, clubs, or volunteer work here if applicable]
+* Example: Dean's List, CS Club Member
+
+**Note:**
+* Replace the bracketed placeholders above with your actual information.
+* If you have a LinkedIn or Github profile, provide links.
+* This resume focuses on your development skills, given the target job. 
+* Adapt this as you gain more real world experience.
+* If you gain experience with .NET put that in your skills section.
+* Consider adding a "Technical Skills" section before projects for a clearer view of all applicable skills.
+* You may add more bullet points under each section to more clearly showcase your experiences.

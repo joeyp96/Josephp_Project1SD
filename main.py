@@ -1,65 +1,107 @@
-def print_resume():
-    resume_text = """
-    Joey [Last Name]
-    [Your Phone Number] | [Your Email] | [Your LinkedIn Profile URL] | [Your GitHub Profile URL]
+# Joseph Pignatone
+# Senior Design Section 002
+# Project / Sprint 1
+# GitHub: joeyp96
 
-    **Summary**
-    Highly motivated and detail-oriented Computer Science student graduating in Spring 2025, eager to apply a strong foundation in software development and a growing understanding of artificial intelligence to build innovative solutions. Possessing a diverse skillset including Java programming, full-stack web development, and database management, complemented by a passion for AI, data mining, and computer forensics. Seeking an entry-level role where I can contribute to meaningful projects while continuously expanding my technical expertise.
+# requirements to run:
+# Python 3.11
+# google-generativeai - pip install google-generativeai
+# grpcio - pip install grpcio
+# grpcio-tools - pip install grpcio-tools
 
-    **Education**
-    - **[Your University Name]** - [City, State]
-      - Bachelor of Science in Computer Science, Expected Graduation: Spring 2025
-      - Relevant Coursework: Data Structures and Algorithms, Object-Oriented Programming, Database Systems, Computer Networks, Operating Systems, Artificial Intelligence, Machine Learning, Data Mining
+# Required libraries:
+# import os
+# import google.generativeai as genai
 
-    **Technical Skills**
-    - **Programming Languages:** Java, Python (Currently Learning), JavaScript
-    - **Web Development:** HTML, CSS, JavaScript, React, REST APIs
-    - **Databases:** MySQL, PostgreSQL
-    - **AI/ML Tools/Concepts:** TensorFlow, PyTorch, scikit-learn, Machine Learning Algorithms, Data Mining Techniques, Data Preprocessing
-    - **Other:** Git, Linux, CLI, Computer Networks, Operating Systems
+import os
+import google.generativeai as genai
 
-    **Projects**
-    - **[Project Name 1]** - [Project Date]
-      - **Description:** A brief but informative description of your project.
-      - **Technologies:** List the technologies you used.
-      - Example: Developed a sentiment analysis tool using Python and scikit-learn to classify text reviews. Achieved 85% accuracy on a test dataset.
+with open("secret.txt", "r") as api_file:
+    api_key = api_file.read().strip()
 
-    - **[Project Name 2]** - [Project Date]
-      - **Description:** A brief but informative description of your project.
-      - **Technologies:** List the technologies you used.
-      - Example: Developed a personal website displaying personal projects and contact information using HTML, CSS, and JavaScript.
+genai.configure(api_key=api_key)
 
-    **Relevant Experience** (If applicable)
-    - **[Job Title]** - [Company Name], [City, State] | [Dates of Employment]
-      - [Brief description of responsibilities and achievements]
+# altered from python dictionary to resolve error
+generation_config = genai.types.GenerationConfig(
+    temperature=1,
+    top_p=0.95,
+    top_k=40,
+    max_output_tokens=8192,
+    response_mime_type="text/plain",
+)
 
-    **Awards & Recognition** (Optional)
-    - [Award Name] - [Year]
-      - [Brief description]
+model = genai.GenerativeModel(
+    model_name="gemini-2.0-flash-exp",
+    generation_config=generation_config,
+)
 
-    **Activities & Interests** (Optional)
-    - [List extracurricular activities or interests]
+chat_session = model.start_chat(history=[])
+
+
+def create_resume(job_description: str, personal_description: str) -> str:
+    prompt = f"""
+    you are a professional resume creator. Create a sample resume in markdown format that will be designed for the
+    skills and job description provided.
+
+    Job Description:
+    {job_description}
+
+    Personal Description:
+    {personal_description}
+
+    Format the resume in a structured, professional way.
     """
-    print(resume_text)
+
+    response = chat_session.send_message(prompt)
+    return response.text
 
 
-def print_job_description():
-    print(f'job description: We are seeking a motivated Entry-Level AI Developer '
-          f'to join our team and help build innovative A.I solutions. '
-          f'In this role, you will work alongside more experienced developers '
-          f'to develop, train, and deploy machine learning models, '
-          f'as well as integrate AI into applications. '
-          f'This is an excellent opportunity for recent graduates or aspiring AI engineers '
-          f'looking to gain hands-on experience in a fast-growing field.')
+def save_resume(resume_output: str) -> None:
+    file_name = "created_resume.txt"
+    file_path = os.path.join(os.getcwd(), file_name)
 
+    with open(file_path, "w", encoding="utf-8") as file:
+        file.write(resume_output)
 
-def print_intro(name):
-    print(f'{name}')
+    print(f"Resume saved to: {file_path}")
+
 
 if __name__ == '__main__':
-    print_intro('hello, my name is joseph and this is the starter code for project 1 in senor design')
+    # job description from .json file line 27 "Application Developer", "company": "Links Technology Solutions"
 
+    user_job_description = """
+Links Technology Solutions is looking for a Software Developer to join their team!
 
-print_job_description()
+This role requires a strong foundation in .NET development with a focus on building
+and maintaining robust applications within an Agile team environment.
 
-print_resume()
+Your Day-to-Day:
+• Design, develop, test, and maintain multiple applications using Microsoft .NET 
+  and related technologies
+• Participate in daily standups
+"""
+
+    user_personal_description = """my name is joey, i'm set to graduate 
+                                      in spring 2025 with a bachelors degree in computer science from bridgewater
+                                      state university, bridgewater MA. my skills include: 
+                                      java programming, full stack web development, experiences with databases, 
+                                      knowledge in computer networks and operating systems, 
+                                      and I’m currently learning about computer forensics, 
+                                      data mining, and a deep understand of modern AI systems. 
+                                      I have no hands on experience in the field 
+                                      but I’m eager to make my way into the industry.
+                                      Project 1: A full stack website with authentication for users to login.
+                                      included html, bootstrap, javascript, and node. We stored user information
+                                      into a database using postgres.
+                                      Project 2: I built a database which stored all 151 original pokemon
+                                      with their name and statistics about them. I then connected this to 
+                                      a website as a front end to display all this information in a clear way.
+                                      Project 3: I created a file transfer protocol program that involved a 
+                                      client program and a server program that could connect to each other 
+                                      and send files back and forth in java."""
+
+    resume_text = create_resume(user_job_description, user_personal_description)
+
+    save_resume(resume_text)
+
+    print(resume_text)
