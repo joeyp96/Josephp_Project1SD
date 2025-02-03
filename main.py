@@ -89,20 +89,22 @@ if __name__ == "__main__":
         "• Participate in daily standups."
     )
 
-    personal_description = (
-        "My name is Joey, and I'm set to graduate in Spring 2025 with a Bachelor's degree in Computer Science from "
-        "Bridgewater State University, Bridgewater, MA. My skills include Java programming, "
-        "full-stack web development, " "experience with databases, knowledge of computer networks and operating"
-        " systems, and I’m currently learning " "about computer forensics, data mining, and modern AI systems. "
-        "I have no hands-on experience in the field but I’m eager to enter the industry and apply my skills. "
-        "In terms of projects, I developed a full-stack web authentication system using HTML, Bootstrap, JavaScript, "
-        "Node.js, and PostgresSQL to store user information. "
-        "Additionally, I built a database containing all 151 original Pokémon along with a front-end web application "
-        "to display their statistics clearly. "
-        "Lastly, I created a file transfer protocol (FTP) program in Java that enables a client and server to "
-        "communicate " "and transfer files back and forth. "
-        "I am passionate about technology and excited to take my first steps into the software engineering industry."
-    )
+    personal_description = """\
+    My name is Joey, and I'm set to graduate in Spring 2025 with a Bachelor's degree in Computer Science 
+    from Bridgewater State University, Bridgewater, MA. My skills include Java programming, 
+    full-stack web development, experience with databases, and knowledge of computer networks 
+    and operating systems. I’m currently learning about computer forensics, data mining, and modern AI systems.
+
+    I have no hands-on experience in the field but I’m eager to enter the industry and apply my skills. 
+    In terms of projects, I developed a full-stack web authentication system using HTML, Bootstrap, 
+    JavaScript, Node.js, and PostgresSQL to store user information.
+
+    Additionally, I built a database containing all 151 original Pokémon, along with a front-end web 
+    application to display their statistics clearly. Lastly, I created a file transfer protocol (FTP) 
+    program in Java that enables a client and server to communicate and transfer files back and forth.
+
+    I am passionate about technology and excited to take my first steps into the software engineering industry.
+    """
 
     resume_text = create_resume(job_description, personal_description)
     save_resume(resume_text)
