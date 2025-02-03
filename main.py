@@ -3,7 +3,7 @@
 # Project / Sprint 1
 # GitHub: joeyp96
 
-# requirements to run:
+# Requirements to run:
 # Python 3.11
 # google-generativeai - pip install google-generativeai
 # grpcio - pip install grpcio
