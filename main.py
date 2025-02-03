@@ -13,12 +13,10 @@
 # import os
 # import google.generativeai as genai
 
-# This comment serves to test pylint.
-
 import os
 import google.generativeai as genai
 
-with open("secret.txt", "r") as api_file:
+with open("secret.txt", "r", encoding="utf-8") as api_file:
     api_key = api_file.read().strip()
 
 genai.configure(api_key=api_key)
@@ -72,7 +70,7 @@ if __name__ == '__main__':
     # job description from .json file line 27 "Application Developer", "company": "Links Technology Solutions"
 
     user_job_description = """
-Links Technology Solutions is looking for a Software Developer to join their team!
+"Links Technology Solutions is looking for a Software Developer to join their team!"
 
 This role requires a strong foundation in .NET development with a focus on building
 and maintaining robust applications within an Agile team environment.
@@ -83,24 +81,24 @@ Your Day-to-Day:
 • Participate in daily standups
 """
 
-    user_personal_description = """my name is joey, i'm set to graduate 
-                                      in spring 2025 with a bachelors degree in computer science from bridgewater
-                                      state university, bridgewater MA. my skills include: 
-                                      java programming, full stack web development, experiences with databases, 
-                                      knowledge in computer networks and operating systems, 
-                                      and I’m currently learning about computer forensics, 
-                                      data mining, and a deep understand of modern AI systems. 
-                                      I have no hands on experience in the field 
-                                      but I’m eager to make my way into the industry.
-                                      Project 1: A full stack website with authentication for users to login.
-                                      included html, bootstrap, javascript, and node. We stored user information
-                                      into a database using postgres.
-                                      Project 2: I built a database which stored all 151 original pokemon
-                                      with their name and statistics about them. I then connected this to 
-                                      a website as a front end to display all this information in a clear way.
-                                      Project 3: I created a file transfer protocol program that involved a 
-                                      client program and a server program that could connect to each other 
-                                      and send files back and forth in java."""
+    user_personal_description = (
+        "My name is Joey, and I'm set to graduate in Spring 2025 with a Bachelor's degree in Computer Science from "
+        "Bridgewater State University, Bridgewater, MA. My skills include Java programming, full-stack web development,"
+        "experience with databases, knowledge of computer networks and operating systems, and I’m currently learning "
+        "about"
+        "computer forensics, data mining, and modern AI systems. I have no hands-on experience in the field but I’m "
+        "eager"
+        "to enter the industry and apply my skills. In terms of projects, I developed a full-stack web authentication "
+        "system"
+        "using HTML, Bootstrap, JavaScript, Node.js, and PostgreSQL to store user information. Additionally, "
+        "I built a database"
+        "containing all 151 original Pokémon along with a front-end web application to display their statistics "
+        "clearly. Lastly,"
+        "I created a file transfer protocol (FTP) program in Java that enables a client and server to communicate and "
+        "transfer"
+        "files back and forth. I am passionate about technology and excited to take my first steps into the software "
+        "engineering industry."
+    )
 
     resume_text = create_resume(user_job_description, user_personal_description)
 
