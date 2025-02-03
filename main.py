@@ -13,6 +13,14 @@
 # import os
 # import google.generativeai as genai
 
+"""
+program for creating resumes using Google Gemini AI.
+
+This program reads a job description, personal description, and generates a resume using AI,
+then saves the response to a file.
+"""
+
+
 import os
 import google.generativeai as genai
 
@@ -39,6 +47,8 @@ chat_session = model.start_chat(history=[])
 
 
 def create_resume(job_description: str, personal_description: str) -> str:
+    """Creates a resume using AI based on the provided job and personal descriptions."""
+
     prompt = f"""
     you are a professional resume creator. Create a sample resume in markdown format that will be designed for the
     skills and job description provided.
@@ -57,6 +67,8 @@ def create_resume(job_description: str, personal_description: str) -> str:
 
 
 def save_resume(resume_output: str) -> None:
+    """Saves the created resume to a file in the current working directory."""
+
     file_name = "created_resume.txt"
     file_path = os.path.join(os.getcwd(), file_name)
 
@@ -69,28 +81,31 @@ def save_resume(resume_output: str) -> None:
 if __name__ == '__main__':
     # job description from .json file line 27 "Application Developer", "company": "Links Technology Solutions"
 
-    user_job_description = (
+    job_description = (
         "Links Technology Solutions is looking for a Software Developer to join their team! "
-        "This role requires a strong foundation in .NET development with a focus on building "
-        "and maintaining robust applications within an Agile team environment. "
-        "Your Day-to-Day: • Design, develop, test, and maintain multiple applications using Microsoft .NET "
-        "and related technologies. • Participate in daily standups."
+        "This role requires a strong foundation in .NET development with a focus on building and "
+        "maintaining robust applications within an Agile team environment. "
+        "Your Day-to-Day: "
+        "• Design, develop, test, and maintain multiple applications using Microsoft .NET and related technologies. "
+        "• Participate in daily standups."
     )
 
-    user_personal_description = (
+    personal_description = (
         "My name is Joey, and I'm set to graduate in Spring 2025 with a Bachelor's degree in Computer Science from "
         "Bridgewater State University, Bridgewater, MA. My skills include Java programming, full-stack web development,"
         "experience with databases, knowledge of computer networks and operating systems, and I’m currently learning "
-        "about computer forensics, data mining, and modern AI systems. I have no hands-on experience in the field but "
-        "I’m eager to enter the industry and apply my skills. In terms of projects, I developed a full-stack web "
-        "authentication system using HTML, Bootstrap, JavaScript, Node.js, and PostgresSQL to store user information. "
+        "about computer forensics, data mining, and modern AI systems. "
+        "I have no hands-on experience in the field but I’m eager to enter the industry and apply my skills. "
+        "In terms of projects, I developed a full-stack web authentication system using HTML, Bootstrap, JavaScript, "
+        "Node.js, and PostgresSQL to store user information. "
         "Additionally, I built a database containing all 151 original Pokémon along with a front-end web application "
-        "to display their statistics clearly. Lastly, I created a file transfer protocol (FTP) program in Java that "
-        "enables a client and server to communicate and transfer files back and forth. I am passionate about"
-        " technology and excited to take my first steps into the software engineering industry."
+        "to display their statistics clearly. "
+        "I created a file transfer protocol (FTP) program in Java that enables a client and server to communicate "
+        "and transfer files back and forth. "
+        "I am passionate about technology and excited to take my first steps into the software engineering industry."
     )
 
-    resume_text = create_resume(user_job_description, user_personal_description)
+    resume_text = create_resume(job_description, personal_description)
 
     save_resume(resume_text)
 
