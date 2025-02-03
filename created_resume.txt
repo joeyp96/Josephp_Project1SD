@@ -1,58 +1,61 @@
 ```markdown
 # Joey [Last Name]
-[Phone Number] | [Email Address] | [LinkedIn Profile URL] | [GitHub Profile URL]
+[Your Phone Number] | [Your Email Address] | [Your LinkedIn Profile URL] | [Your GitHub Profile URL]
 
 **Summary**
 
-Highly motivated and detail-oriented Computer Science student at Bridgewater State University, graduating Spring 2025, eager to contribute to a dynamic team as a Software Developer. Possessing a strong foundation in programming principles, database management, and full-stack web development.  Actively expanding knowledge in emerging fields such as computer forensics and AI.  Seeking an opportunity to apply academic knowledge and project experience to build robust and scalable applications, specifically within the .NET environment.
-
-**Education**
-
-**Bridgewater State University, Bridgewater, MA**
-* Bachelor of Science in Computer Science, Expected Graduation: May 2025
-* Relevant Coursework: Data Structures and Algorithms, Database Management Systems, Operating Systems, Computer Networks, Web Development 
+Highly motivated and enthusiastic Computer Science student at Bridgewater State University, graduating Spring 2025, seeking a Software Developer position to apply strong foundational knowledge and passion for technology to real-world applications. Eager to contribute to an Agile team environment, with a solid understanding of software development principles and a proven ability to learn quickly and tackle new challenges. Demonstrated experience in full-stack web development, database management, and programming principles. Actively learning modern development trends and technologies.
 
 **Skills**
 
-* **Programming Languages:** Java, JavaScript, HTML, CSS
-* **Frameworks/Libraries:**  Bootstrap, Node.js
-* **Databases:** PostgreSQL
-* **Concepts:**  Full Stack Web Development, Computer Networks, Operating Systems, Agile Methodologies (Exposure), File Transfer Protocols
-* **Emerging Fields:** Computer Forensics (Learning), Data Mining (Learning), Modern AI Systems (Learning)
+*   **Programming Languages:** Java, JavaScript, HTML, SQL
+*   **Frameworks/Libraries:** Node.js, Bootstrap
+*   **Databases:** PostgreSQL
+*   **Web Technologies:** Full-Stack Web Development
+*   **Concepts:** Computer Networks, Operating Systems
+*   **Methodologies:** Agile (Understanding)
+*   **Learning:** .NET (Actively Learning), Computer Forensics, Data Mining, Modern AI Systems
+*   **Tools:** Git
+
+**Education**
+
+*   **Bridgewater State University, Bridgewater, MA**
+    *   Bachelor of Science in Computer Science, Expected Graduation: Spring 2025
+    *   Relevant Coursework: Data Structures and Algorithms, Database Management, Computer Networks, Operating Systems, Software Engineering
 
 **Projects**
 
-**Full-Stack User Authentication Website**
-* Developed a complete full-stack website incorporating user authentication for secure login.
-* Utilized HTML, CSS (with Bootstrap framework), and JavaScript for front-end design.
-* Implemented server-side logic using Node.js and database interactions with PostgreSQL.
-* Demonstrated ability to create interactive user experiences and manage sensitive information.
+*   **Full-Stack Web Authentication System**
+    *   Developed a secure web authentication system using HTML, Bootstrap, JavaScript, Node.js, and PostgreSQL.
+    *   Implemented user registration, login, and secure password handling.
+    *   Demonstrates knowledge of full-stack development and database integration.
 
-**Pokemon Database and Website**
-* Designed and implemented a database to store detailed information for the original 151 Pokemon.
-* Populated database with data including Pokemon names and their statistical attributes.
-* Built a user-friendly front-end website to effectively display the database information.
-* Utilized database knowledge to create a visually accessible and navigable display of stored information.
+*   **Pokémon Database and Web Application**
+    *   Designed and implemented a PostgreSQL database containing information on all 151 original Pokémon.
+    *   Built a front-end web application using HTML and JavaScript to display Pokémon statistics effectively.
+    *   Showcases skills in database design and frontend development.
 
-**File Transfer Protocol (FTP) Program**
-* Created a functional FTP client and server program using Java for file transfer over a network.
-* Implemented network socket programming to establish communication between client and server.
-* Demonstrated ability to develop multi-part programs incorporating networking and file management.
+*   **File Transfer Protocol (FTP) Program**
+    *   Developed a functional FTP program in Java, enabling client-server file transfers.
+    *   Demonstrates understanding of network communication and multi-threaded programming concepts.
 
 **Experience**
 
-*No professional experience*
+*   **[Insert Part-Time/Summer Job or Internship here, even if not tech related, if applicable. Otherwise, remove this section. Example below:]**
+    *   **[Job Title], [Company Name], [Dates of Employment]**
+        *   [Brief description of responsibilities and skills gained, emphasizing transferable skills like teamwork, communication, problem-solving, or time management.]
+    *   *Example:  Customer Service Representative, Retail Company, Summer 2023. Provided exceptional customer service, resolved complaints efficiently and collaborated effectively with team members to ensure smooth store operations.*
 
-**Awards and Activities**
-
-* [List any relevant awards, scholarships, clubs, or volunteer work here if applicable]
-* Example: Dean's List, CS Club Member
+**Awards & Recognition (Optional)**
+*   [If you have any academic awards or recognition, list them here.]
 
 **Note:**
-* Replace the bracketed placeholders above with your actual information.
-* If you have a LinkedIn or Github profile, provide links.
-* This resume focuses on your development skills, given the target job. 
-* Adapt this as you gain more real world experience.
-* If you gain experience with .NET put that in your skills section.
-* Consider adding a "Technical Skills" section before projects for a clearer view of all applicable skills.
-* You may add more bullet points under each section to more clearly showcase your experiences.
+
+*   Replace the bracketed placeholders with your actual information.
+*   This resume is tailored to the provided job description, focusing on your software development skills and eagerness to learn .NET.
+*   While you don't have direct .NET experience, highlighting your related skills, willingness to learn and project-based experience is crucial.
+*   Consider adding any relevant coursework if you have taken any database, software engineering, or web development related classes.
+*   If you have any relevant tech-related part-time or volunteer experience, adding an experience section would be beneficial, even if it isn't a direct software development role. Focus on transferable skills such as problem solving and teamwork.
+*   The 'Awards & Recognition' section is optional; remove it if you have none.
+*   Tailor the skills listed further based on the job requirements when you are applying.
+*   Keep your resume to one page if possible.
