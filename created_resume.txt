@@ -1,61 +1,52 @@
 ```markdown
 # Joey [Last Name]
-[Your Phone Number] | [Your Email Address] | [Your LinkedIn Profile URL] | [Your GitHub Profile URL]
+[Phone Number] | [Email Address] | [LinkedIn Profile URL (Optional)] | [GitHub Profile URL (Optional)]
 
 **Summary**
 
-Highly motivated and enthusiastic Computer Science student at Bridgewater State University, graduating Spring 2025, seeking a Software Developer position to apply strong foundational knowledge and passion for technology to real-world applications. Eager to contribute to an Agile team environment, with a solid understanding of software development principles and a proven ability to learn quickly and tackle new challenges. Demonstrated experience in full-stack web development, database management, and programming principles. Actively learning modern development trends and technologies.
-
-**Skills**
-
-*   **Programming Languages:** Java, JavaScript, HTML, SQL
-*   **Frameworks/Libraries:** Node.js, Bootstrap
-*   **Databases:** PostgreSQL
-*   **Web Technologies:** Full-Stack Web Development
-*   **Concepts:** Computer Networks, Operating Systems
-*   **Methodologies:** Agile (Understanding)
-*   **Learning:** .NET (Actively Learning), Computer Forensics, Data Mining, Modern AI Systems
-*   **Tools:** Git
+Highly motivated and enthusiastic Computer Science student graduating in Spring 2025 from Bridgewater State University with a strong foundation in software development principles and a passion for .NET technologies. Eager to contribute to a dynamic Agile team and leverage academic knowledge in Java, full-stack web development, and database management to build and maintain robust applications.  Actively expanding knowledge in emerging fields such as computer forensics, data mining, and AI.
 
 **Education**
 
-*   **Bridgewater State University, Bridgewater, MA**
-    *   Bachelor of Science in Computer Science, Expected Graduation: Spring 2025
-    *   Relevant Coursework: Data Structures and Algorithms, Database Management, Computer Networks, Operating Systems, Software Engineering
+*   **Bridgewater State University, Bridgewater, MA** | Expected Graduation: Spring 2025
+    *   Bachelor of Science in Computer Science
+    *   Relevant Coursework: Data Structures and Algorithms, Database Management Systems, Computer Networks, Operating Systems, Software Engineering
+
+**Skills**
+
+*   **Programming Languages:** Java, JavaScript, HTML, CSS, SQL
+*   **Frameworks/Libraries:** .NET (Learning), Node.js, Bootstrap
+*   **Databases:** PostgreSQL
+*   **Tools:** Git, Agile Methodologies (Understanding)
+*   **Operating Systems:** Windows, Linux (Basic)
+*   **Other:** Full-Stack Web Development, Database Design, Problem Solving
 
 **Projects**
 
 *   **Full-Stack Web Authentication System**
-    *   Developed a secure web authentication system using HTML, Bootstrap, JavaScript, Node.js, and PostgreSQL.
-    *   Implemented user registration, login, and secure password handling.
-    *   Demonstrates knowledge of full-stack development and database integration.
+    *   Developed a secure web application with user authentication and authorization features.
+    *   Technologies: HTML, Bootstrap, JavaScript, Node.js, PostgreSQL.
+    *   Emphasized secure password storage and user data management.
 
-*   **Pokémon Database and Web Application**
-    *   Designed and implemented a PostgreSQL database containing information on all 151 original Pokémon.
-    *   Built a front-end web application using HTML and JavaScript to display Pokémon statistics effectively.
-    *   Showcases skills in database design and frontend development.
+*   **Pokémon Database and Web Display**
+    *   Designed and implemented a database containing information on the original 151 Pokémon.
+    *   Created a user-friendly web interface to display Pokémon statistics.
+    *   Showcased skills in database design, front-end development, and data visualization.
 
-*   **File Transfer Protocol (FTP) Program**
-    *   Developed a functional FTP program in Java, enabling client-server file transfers.
-    *   Demonstrates understanding of network communication and multi-threaded programming concepts.
+*   **Java File Transfer Protocol (FTP) Program**
+    *   Built a client-server application in Java enabling file transfer between two systems.
+    *   Implemented TCP/IP communication protocols for reliable data transfer.
+    *   Demonstrated understanding of network programming concepts.
 
 **Experience**
 
-*   **[Insert Part-Time/Summer Job or Internship here, even if not tech related, if applicable. Otherwise, remove this section. Example below:]**
-    *   **[Job Title], [Company Name], [Dates of Employment]**
-        *   [Brief description of responsibilities and skills gained, emphasizing transferable skills like teamwork, communication, problem-solving, or time management.]
-    *   *Example:  Customer Service Representative, Retail Company, Summer 2023. Provided exceptional customer service, resolved complaints efficiently and collaborated effectively with team members to ensure smooth store operations.*
+*   *(Since you have no work experience list extracurricular activities or any organizations/clubs you are a member of)*
 
-**Awards & Recognition (Optional)**
-*   [If you have any academic awards or recognition, list them here.]
+**Awards and Recognition**
 
-**Note:**
+*   *(List any Academic Achievements)*
 
-*   Replace the bracketed placeholders with your actual information.
-*   This resume is tailored to the provided job description, focusing on your software development skills and eagerness to learn .NET.
-*   While you don't have direct .NET experience, highlighting your related skills, willingness to learn and project-based experience is crucial.
-*   Consider adding any relevant coursework if you have taken any database, software engineering, or web development related classes.
-*   If you have any relevant tech-related part-time or volunteer experience, adding an experience section would be beneficial, even if it isn't a direct software development role. Focus on transferable skills such as problem solving and teamwork.
-*   The 'Awards & Recognition' section is optional; remove it if you have none.
-*   Tailor the skills listed further based on the job requirements when you are applying.
-*   Keep your resume to one page if possible.
+**Interests**
+
+*   *(Optional section to showcase interests)*
+```

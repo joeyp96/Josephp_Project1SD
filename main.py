@@ -12,6 +12,9 @@
 # Required libraries:
 # import os
 # import google.generativeai as genai
+# import unittest
+# import sqlite3
+# import json
 
 """
 program for creating resumes using Google Gemini AI.
@@ -23,6 +26,7 @@ then saves the response to a file.
 
 import os
 import google.generativeai as genai
+from json_database import create_database, import_json_data
 
 with open("secret.txt", "r", encoding="utf-8") as api_file:
     api_key = api_file.read().strip()
@@ -79,6 +83,16 @@ def save_resume(resume_output: str) -> None:
 
 
 if __name__ == "__main__":
+    # new code starts
+    create_database()  # Ensure the database exists
+
+    # import JSON files
+    import_json_data("rapid_jobs2.json", "file1")
+    import_json_data("rapidResults.json", "file2")
+
+    print("Database update complete! No duplicate jobs inserted.")
+    # new code ends
+
     JOB_DESCRIPTION = (
         "Links Technology Solutions is looking for a Software Developer to join their team! "
         "This role requires a strong foundation in .NET development with a focus on building and "
