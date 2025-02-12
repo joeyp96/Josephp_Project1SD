@@ -1,7 +1,7 @@
 Instructions on how to run the program:
 - requirements to run:
 - Python 3.11
-- google-generativeai - pip install google-generativeai
+- google-generativeai - pip install google-generativeai (included on github actions)
 - grpcio - pip install grpcio
 - grpcio-tools - pip install grpcio-tools
 
