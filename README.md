@@ -1,14 +1,47 @@
 Instructions on how to run the program:
-# requirements to run:
-# Python 3.11
-# google-generativeai - pip install google-generativeai
-# grpcio - pip install grpcio
-# grpcio-tools - pip install grpcio-tools
+- requirements to run:
+- Python 3.11
+- google-generativeai - pip install google-generativeai
+- grpcio - pip install grpcio
+- grpcio-tools - pip install grpcio-tools
 
-# Required libraries:
-# import os
-# import google.generativeai as genai
+- Required libraries:
+- import os
+- import google.generativeai as genai
+- sprint 2 update!
+- import unittest
+- import sqlite3
+- import json
 
+# Sprint 2
+
+To run the program:
+To run this program on the sprint 2 update, you dont need to do anything new aside from importing the new libraries listed above.
+once the new libraries are imported, you may click run from the main.py file and a few things will happen:
+In addition to the previous functionality, the program will now take in job listings from two different .json files in different formats.
+The two formats are then unified and joined to a single table and stored in an sqlite database for the user to view. 
+Because there is not yet a GUI implemented, I reccomend using DB browser to open the database and run the query:
+select * from jobs; to view the full database of job listings and their fields.
+
+Automated testing:
+Automated tests have now been added. While they run automatically on github, you may do so from your ide.
+Navigate to the tests folder and open the test_code.py file. Then, run from the if __name__ function to
+run both tests together. Upon execution, a test.db is created. This takes in information from a fake
+job listing I generated in the same format as one of the .json files I was given for this project. 
+This file is called test.json. Test 1 confirms my import_json_data proprley extracts data from these
+file formats and test 2 confirms that my program properly stores this information afterwards. 
+You may view the test.db file as well by opening it in DB browser and running select * from jobs;
+you'll be met with one job listing with "junk" test data. 
+
+Utilization of A.I:
+I used A.I. for a few things on this project.
+- determining the differences in the .json file formats. This helped me code accordingly to extract data from both files.
+- Gave me the idea for dynamic database names which allow me to test multiple databases with ease. (jobs.db and test.db)
+- determining the differences in handling the URLs from each .json file. This again, helped me code accordingly to get the data I wanted in my database.
+- Generating fake information for my test.json file. 
+
+
+# Sprint 1 
 using my API key:
 you must add the secret.txt file that i've emailed you to the project directory.
 If there are issues downloading the file due to BSU restrictions, you must create one by: 
