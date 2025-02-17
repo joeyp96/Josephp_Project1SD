@@ -18,7 +18,8 @@ def create_database(db_name=DB_NAME):
     """Creates the specified database and jobs table if they don't exist."""
     conn = sqlite3.connect(db_name)
     cursor = conn.cursor()
-    cursor.execute('''
+    cursor.execute(
+        """
         CREATE TABLE IF NOT EXISTS jobs (
             id TEXT PRIMARY KEY,
             title TEXT,
@@ -35,7 +36,8 @@ def create_database(db_name=DB_NAME):
             source TEXT,
             email TEXT
         )
-    ''')
+    """
+    )
     conn.commit()
     conn.close()
 
@@ -44,27 +46,30 @@ def insert_job(job, db_name=DB_NAME):
     """Inserts a job into the specified database, with no duplicates."""
     conn = sqlite3.connect(db_name)  # Use dynamic database name for testing
     cursor = conn.cursor()
-    cursor.execute('''
+    cursor.execute(
+        """
         INSERT OR IGNORE INTO jobs (
             id, title, company, location, employment_type, date_posted, salary_min,
             salary_max, salary_currency, is_remote, job_description, job_url, source, email
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    ''', (
-        job.get("id"),
-        job.get("title"),
-        job.get("company"),
-        job.get("location"),
-        job.get("employment_type"),
-        job.get("date_posted"),
-        job.get("salary_min"),
-        job.get("salary_max"),
-        job.get("salary_currency"),
-        job.get("is_remote"),
-        job.get("description"),
-        job.get("job_url"),
-        job.get("source"),
-        job.get("email")
-    ))
+    """,
+        (
+            job.get("id"),
+            job.get("title"),
+            job.get("company"),
+            job.get("location"),
+            job.get("employment_type"),
+            job.get("date_posted"),
+            job.get("salary_min"),
+            job.get("salary_max"),
+            job.get("salary_currency"),
+            job.get("is_remote"),
+            job.get("description"),
+            job.get("job_url"),
+            job.get("source"),
+            job.get("email"),
+        ),
+    )
     conn.commit()
     conn.close()
 
@@ -83,12 +88,16 @@ def import_json_data(file_path, source, db_name=DB_NAME):
                     for job in job_data:
                         transformed_job = unify_job_data(job, source)
                         extracted_jobs.append(transformed_job)
-                        insert_job(transformed_job, db_name)  # Insert into the specified database
+                        insert_job(
+                            transformed_job, db_name
+                        )  # Insert into the specified database
 
                 elif isinstance(job_data, dict):  # Single job
                     transformed_job = unify_job_data(job_data, source)
                     extracted_jobs.append(transformed_job)
-                    insert_job(transformed_job, db_name)  # Insert into the specified database
+                    insert_job(
+                        transformed_job, db_name
+                    )  # Insert into the specified database
 
             except json.JSONDecodeError as e:
                 print(f"Skipping invalid JSON line in {file_path}: {e}")
@@ -112,7 +121,7 @@ def unify_job_data(job, source):
         "description": job.get("description"),
         "job_url": get_job_url(job),
         "source": source,
-        "email": job.get("emails")
+        "email": job.get("emails"),
     }
 
 
@@ -122,9 +131,9 @@ def get_job_url(job):
     if "job_url" in job:
         return job["job_url"]
     if (
-            "jobProviders" in job
-            and isinstance(job["jobProviders"], list)
-            and len(job["jobProviders"]) > 0
+        "jobProviders" in job
+        and isinstance(job["jobProviders"], list)
+        and len(job["jobProviders"]) > 0
     ):
         return job["jobProviders"][0].get("url")
     return None
