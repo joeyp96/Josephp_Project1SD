@@ -1,52 +1,53 @@
 ```markdown
 # Joey [Last Name]
-[Phone Number] | [Email Address] | [LinkedIn Profile URL (Optional)] | [GitHub Profile URL (Optional)]
+[Phone Number] | [Email Address] | [LinkedIn Profile URL] | [GitHub Profile URL (Optional)]
 
 **Summary**
 
-Highly motivated and enthusiastic Computer Science student graduating in Spring 2025 from Bridgewater State University with a strong foundation in software development principles and a passion for .NET technologies. Eager to contribute to a dynamic Agile team and leverage academic knowledge in Java, full-stack web development, and database management to build and maintain robust applications.  Actively expanding knowledge in emerging fields such as computer forensics, data mining, and AI.
+Highly motivated and eager Computer Science student graduating Spring 2025 from Bridgewater State University with a strong foundation in software development principles and a passion for .NET technologies. Seeking a Software Developer position at Links Technology Solutions to contribute to the design, development, and maintenance of robust applications within an Agile environment. Eager to learn and apply acquired skills in Java, full-stack web development, and database management to contribute to team success. Currently expanding knowledge in emerging fields like computer forensics, data mining, and AI systems.
 
 **Education**
 
 *   **Bridgewater State University, Bridgewater, MA** | Expected Graduation: Spring 2025
     *   Bachelor of Science in Computer Science
-    *   Relevant Coursework: Data Structures and Algorithms, Database Management Systems, Computer Networks, Operating Systems, Software Engineering
+    *   Relevant Coursework: Data Structures and Algorithms, Database Management Systems, Computer Networks, Operating Systems
 
 **Skills**
 
 *   **Programming Languages:** Java, JavaScript, HTML, CSS, SQL
-*   **Frameworks/Libraries:** .NET (Learning), Node.js, Bootstrap
+*   **Frameworks/Libraries:** Node.js, Bootstrap
 *   **Databases:** PostgreSQL
-*   **Tools:** Git, Agile Methodologies (Understanding)
-*   **Operating Systems:** Windows, Linux (Basic)
-*   **Other:** Full-Stack Web Development, Database Design, Problem Solving
+*   **Tools:** Git, [Other tools you're familiar with, e.g., VS Code, IntelliJ]
+*   **Concepts:** Object-Oriented Programming (OOP), Agile Methodologies (basic understanding)
+*   **Operating Systems:** Windows, macOS, Linux (basic knowledge)
 
 **Projects**
 
 *   **Full-Stack Web Authentication System**
-    *   Developed a secure web application with user authentication and authorization features.
-    *   Technologies: HTML, Bootstrap, JavaScript, Node.js, PostgreSQL.
-    *   Emphasized secure password storage and user data management.
+    *   Developed a secure web authentication system utilizing HTML, Bootstrap, JavaScript, Node.js, and PostgreSQL.
+    *   Implemented user registration, login, and password management functionalities.
+    *   Employed database principles to efficiently and securely store user information.
 
-*   **Pokémon Database and Web Display**
-    *   Designed and implemented a database containing information on the original 151 Pokémon.
-    *   Created a user-friendly web interface to display Pokémon statistics.
-    *   Showcased skills in database design, front-end development, and data visualization.
+*   **Pokémon Database and Web Application**
+    *   Designed and implemented a database containing information on all 151 original Pokémon.
+    *   Built a user-friendly web application front-end to display Pokémon statistics in a clear and organized manner.
+    *   Demonstrated proficiency in database design and web development principles.
 
 *   **Java File Transfer Protocol (FTP) Program**
-    *   Built a client-server application in Java enabling file transfer between two systems.
-    *   Implemented TCP/IP communication protocols for reliable data transfer.
-    *   Demonstrated understanding of network programming concepts.
+    *   Created a Java-based FTP program enabling client-server communication for file transfer.
+    *   Implemented functionality for uploading, downloading, and managing files between client and server.
+    *   Showcased proficiency in Java programming and network communication concepts.
 
-**Experience**
+**Relevant Coursework & Learning Interests**
 
-*   *(Since you have no work experience list extracurricular activities or any organizations/clubs you are a member of)*
+*   Currently studying computer forensics, data mining, and modern AI systems.
+*   Eager to learn and contribute to projects utilizing .NET and related technologies.
+*   Dedicated to continuous learning and staying up-to-date with industry trends.
 
-**Awards and Recognition**
-
-*   *(List any Academic Achievements)*
-
-**Interests**
-
-*   *(Optional section to showcase interests)*
-```
+**Note to Joey:**
+*   Replace the bracketed placeholders with your actual information.
+*   This resume focuses on highlighting transferable skills and project experience relevant to the .NET job description, given your limited professional experience.
+*   Quantify your project accomplishments whenever possible. For example, "Improved data retrieval speed by X% in the Pokemon Database."
+*   Customize the "Skills" section to align with the specific requirements outlined in the job description if you gain familiarity with .NET.
+*   Consider adding a "Certifications" section if you pursue relevant certifications like the Microsoft Certified Azure Fundamentals.
+*   Tailor the summary for any job for better chances

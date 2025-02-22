@@ -131,9 +131,29 @@ def get_job_url(job):
     if "job_url" in job:
         return job["job_url"]
     if (
-        "jobProviders" in job
-        and isinstance(job["jobProviders"], list)
-        and len(job["jobProviders"]) > 0
+            "jobProviders" in job
+            and isinstance(job["jobProviders"], list)
+            and len(job["jobProviders"]) > 0
     ):
         return job["jobProviders"][0].get("url")
     return None
+
+
+def create_user_profiles_table():
+    """Creates the user_profiles table if it doesn't exist."""
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS user_profiles (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT UNIQUE,
+            email TEXT,
+            phone TEXT,
+            github_linkedin TEXT,
+            projects TEXT,
+            classes TEXT,
+            other TEXT
+        )
+    ''')
+    conn.commit()
+    conn.close()
