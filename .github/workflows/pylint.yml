@@ -19,12 +19,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pylint  # Explicitly install pylint
-          pip install -r requirements.txt  # Install all required dependencies
+          pip install -r requirements.txt  # Install everything in one step
 
-      - name: Verify Pylint Installation
+      - name: Verify Installed Packages
         run: |
-          python -m pylint --version  # Check if pylint is correctly installed
+          python -m pip list  # Ensure google-generativeai and dependencies are installed
 
       - name: Run Pylint
         run: |
@@ -35,6 +34,6 @@ jobs:
           PYTHONUNBUFFERED: 1  
           DISPLAY: ":99.0"  
         run: |
-          sudo apt-get install -y xvfb  # Install X virtual framebuffer (for GUI testing)
+          sudo apt-get install -y xvfb  # Install virtual display for GUI tests
           Xvfb :99 -screen 0 1920x1080x24 &  # Start virtual display
           python -m unittest discover -s tests -p "*.py"
