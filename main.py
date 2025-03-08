@@ -141,19 +141,20 @@ def generate_resume_and_cover_letter(user_data, job_data, doc_type):
         You are an expert cover letter writer. Create a professional cover letter in Markdown format for the following 
         individual:
 
-        **{name}**  
-        {email}  
-        {phone}  
-        {github_linkedin}  
+        **{name}**
+        {email}
+        {phone}
+        {github_linkedin}
 
-        **{company_name}**  
-        {job_title}  
-        {job_location}  
+        **{company_name}**
+        {job_title}
+        {job_location}
 
         Dear Hiring Manager,
 
-        I am excited to apply for the {job_title} position at {company_name}. With my background in {classes}, I am 
-        eager to bring my expertise to your team. My experience includes:
+        I am excited to apply for the {job_title} position at {company_name}.
+        With my background in {classes},I am eager to bring my expertise to your team. 
+        My experience includes:
 
         **Projects & Experience:**
         {projects}
@@ -161,8 +162,8 @@ def generate_resume_and_cover_letter(user_data, job_data, doc_type):
         **Additional Information:**
         {other}
 
-        I would love the opportunity to discuss how my skills can contribute to {company_name}. Thank you for your time
-        and consideration.
+        I would love the opportunity to discuss how my skills can contribute to {company_name}.
+        Thank you for your time and consideration.
 
         Best regards,  
         **{name}**
