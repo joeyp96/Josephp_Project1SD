@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Install all dependencies
+          pip install -r requirements.txt  # Install dependencies
 
       - name: Start Virtual Display for PySimpleGUI Tests
         run: |
@@ -28,21 +28,28 @@ jobs:
           echo "Virtual Display started."
 
       - name: Run Pylint
+        run: pylint $(git ls-files '*.py')
+
+      - name: Set Up Secret File (Python 3.12)
+        if: matrix.python-version == '3.12'
         run: |
-          pylint $(git ls-files '*.py')
+          echo "${{ secrets.MY_SECRET }}" > secret.txt
+          chmod 600 secret.txt  # Secure the file
 
       - name: Run Unit Tests (Python 3.12)
         if: matrix.python-version == '3.12'
         env:
           DISPLAY: ":99"
           PYTHONUNBUFFERED: "1"
-        run: |
-          python -m unittest test_code
+        run: python -m unittest test_code
+
+      - name: Cleanup Secret File (Python 3.12)
+        if: matrix.python-version == '3.12'
+        run: rm -f secret.txt
 
       - name: Run Unit Tests (Other Versions)
         if: matrix.python-version != '3.12'
         env:
           DISPLAY: ":99"
           PYTHONUNBUFFERED: "1"
-        run: |
-          python -m unittest discover -s tests -p "*.py" --buffer --verbose
+        run: python -m unittest discover -s tests -p "*.py" --buffer --verbose
