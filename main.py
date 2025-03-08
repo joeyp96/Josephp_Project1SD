@@ -153,7 +153,7 @@ def generate_resume_and_cover_letter(user_data, job_data, doc_type):
         Dear Hiring Manager,
 
         I am excited to apply for the {job_title} position at {company_name}.
-        With my background in {classes},I am eager to bring my expertise to your team. 
+        With my background in {classes},I am eager to bring my expertise to your team.
         My experience includes:
 
         **Projects & Experience:**
