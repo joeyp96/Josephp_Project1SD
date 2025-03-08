@@ -1,4 +1,5 @@
 """User Interface file for displaying job listings and storing user profiles."""
+# pylint: disable=no-member
 
 import sqlite3
 import PySimpleGUI as sg
