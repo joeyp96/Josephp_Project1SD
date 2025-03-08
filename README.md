@@ -8,10 +8,29 @@ Instructions on how to run the program:
 - Required libraries:
 - import os
 - import google.generativeai as genai
+- 
 - sprint 2 update!
 - import unittest
 - import sqlite3
 - import json
+
+- sprint 3 update!
+- import PySimpleGUI as sg
+
+# Sprint 3
+To run the program on the sprint 3 update you may follow the same instructions as before with one small change to 
+run and use the GUI. Once pysimpleGUI is imported into your IDE (prefereably pycharm), navigate to the 
+user_interface file. From the frop down menu at the top of pycharm, select "from current file". At this point
+you may run the file and utilize the GUI, you'll see all the jobs within the previously created database
+and when you click on a job, more information about the job will be displayed in the window to the right side. 
+Additionally, you may fill out the fields that prompt you for your personal information and store that information
+into the jobs.db within a new table.
+
+Autmated testing:
+To run the automated tests, navigate to the test_code.py file and ensure that "from current file" is selected. from here just click "run" at the top of your screen and all the tests will pass. 
+
+utilization of AI: 
+I once again used AI to create fake information to test on one of my users stored within the database. I also used it to help me with creating some of the elements of my automated tests as I found this to be the most diffifuclt part of the program once again.  
 
 # Sprint 2
 

@@ -19,22 +19,21 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pylint  # Explicitly install pylint
-          pip install -r requirements.txt  # Install all required dependencies
+          pip install -r requirements.txt  # Install all dependencies
 
-      - name: Verify Pylint Installation
+      - name: Start Virtual Display for PySimpleGUI Tests
         run: |
-          python -m pylint --version  # Check if pylint is correctly installed
+          Xvfb :99 -screen 0 1920x1080x24 -nolisten tcp -fbdir /var/tmp &
+          export DISPLAY=:99
+          echo "Virtual Display started."
 
       - name: Run Pylint
         run: |
-          python -m pylint $(git ls-files '*.py')
+          pylint $(git ls-files '*.py')
 
-      - name: Run Unit Tests
+      - name: Run Unit Tests (Automated, No User Input)
         env:
-          PYTHONUNBUFFERED: 1  
-          DISPLAY: ":99.0"  
+          DISPLAY: ":99"
+          PYTHONUNBUFFERED: "1" 
         run: |
-          sudo apt-get install -y xvfb  # Install X virtual framebuffer (for GUI testing)
-          Xvfb :99 -screen 0 1920x1080x24 &  # Start virtual display
-          python -m unittest discover -s tests -p "*.py"
+          python -m unittest discover -s tests -p "*.py" --buffer --verbose
