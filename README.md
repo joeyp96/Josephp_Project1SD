@@ -13,9 +13,41 @@ Instructions on how to run the program:
 - import unittest
 - import sqlite3
 - import json
-
+-
 - sprint 3 update!
 - import PySimpleGUI as sg
+-
+- sprint 4 update!
+- from xhtml2pdf import pisa
+- import markdown
+- from unittest.mock import patch, MagicMock
+
+# Sprint 4
+To run the program, all steps remain the same but with new added features. As before in sprint 3, you may select a saved user or create a new one by entering 
+your information and clicking the "save user info" button. In the sprint 4 update, when you have a job selected and click the generate resume button or generate cover
+letter button, the generated documents will be specifically for the job you have selected. The documents will be in pdf format now and be exported to a folder 
+called "generated_pdfs". 
+
+IMPORTANT: each user profile may only have 1 resume and 1 cover letter. If you have a generated resume/cover letter and run another request for a new resume/cover letter 
+under the same account, the previous version will be overwritten. This allows the user to enter information for specific types of jobs and toggle between them easily. 
+
+Automated testing:
+All automated testing functions as it did in sprint 3. However, I cant get git actions to pass on python version 3.12 only. All other versions of python pass with no issue. 
+
+What the new tests check for:
+- TestResponse: testing that I get a 200/ok from AI when I query it
+- TestCreateResumePrompt: test that prompt contains job info and personal info
+- TestUrl: tests for URLs in the job listings (multiple cases) 
+
+utilization of AI:
+I used AI to generate "fake" information where necessary for test users or fields like "dummy resume text". 
+AI gave me the idea of using a mock message / dummy response for my testcreateresume test. This saved me from
+having to refactor my code in main.py. 
+AI also gave me the idea to convert my markdown.txt files to html and then convert those files to .pdf. I went with
+this option as I had tons of compatibility issues with other methods using macOS. This also alligned better with my
+expereience as i've done a lot of web development. 
+Lastly, i attempted to use AI to fix my .YML file with python 3.12 but had little success. I beleive this is because
+I code on 3.11 and could not foresee any issues until git actions checked it.
 
 # Sprint 3
 To run the program on the sprint 3 update you may follow the same instructions as before with one small change to 
