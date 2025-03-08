@@ -2,5 +2,9 @@ pylint
 google-generativeai
 grpcio
 grpcio-tools
-PySimpleGUI
+PySimpleGUI~=5.0.6
 
+
+google~=3.0.0
+Markdown~=3.7
+xhtml2pdf~=0.2.17

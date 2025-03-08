@@ -23,9 +23,10 @@ This program reads a job description, personal description, and generates a resu
 then saves the response to a file.
 """
 
-
 import os
 import google.generativeai as genai
+import markdown
+from xhtml2pdf import pisa
 from json_database import create_database, import_json_data
 
 with open("secret.txt", "r", encoding="utf-8") as api_file:
@@ -51,10 +52,10 @@ chat_session = model.start_chat(history=[])
 
 
 def create_resume(job_desc: str, personal_desc: str) -> str:
-    """Creates a resume using AI based on the provided job and personal descriptions."""
+    """Creates a resume using AI based on job and personal descriptions."""
 
     prompt = f"""
-    you are a professional resume creator. Create a sample resume in markdown format that will be designed for the
+    You are a professional resume creator. Create a sample resume in markdown format that will be designed for the
     skills and job description provided.
 
     Job Description:
@@ -64,6 +65,7 @@ def create_resume(job_desc: str, personal_desc: str) -> str:
     {personal_desc}
 
     Format the resume in a structured, professional way.
+    Do not include any additional information like suggestions. 
     """
 
     response = chat_session.send_message(prompt)
@@ -82,44 +84,117 @@ def save_resume(resume_output: str) -> None:
     print(f"Resume saved to: {file_path}")
 
 
+# pylint: disable=too-many-locals
+
+def generate_resume_and_cover_letter(user_data, job_data, doc_type):
+    """
+    Generates a resume or cover letter using Gemini AI and saves it as a PDF.
+    :param user_data: Dictionary containing user information.
+    :param job_data: Dictionary containing job details.
+    :param doc_type: "resume" or "cover_letter" to specify document type.
+    :return: File path to the generated PDF.
+    """
+    # Get user details
+    name = user_data[1]
+    email = user_data[2]
+    phone = user_data[3]
+    github_linkedin = user_data[4]
+    projects = user_data[5]
+    classes = user_data[6]
+    other = user_data[7]
+
+    # Get job details
+    job_title = job_data.get("title", "[Insert Job Title]")
+    company_name = job_data.get("company", "[Insert Company Name]")
+    job_location = job_data.get("location", "[Insert Job Location]")
+    job_description = job_data.get("description", "[Insert Job Description]")
+
+    # AI prompt
+    if doc_type == "resume":
+        prompt = f"""
+        You are an expert resume writer. Create a professional resume in Markdown format for the following individual:
+
+        Name: {name}
+        Email: {email}
+        Phone: {phone}
+        GitHub/LinkedIn: {github_linkedin}
+
+        Applying for: {job_title} at {company_name}
+        Location: {job_location}
+
+        Job Description:
+        {job_description}
+
+        **Projects & Experience:**
+        {projects}
+
+        **Relevant Classes:**
+        {classes}
+
+        **Additional Information:**
+        {other}
+
+        Format the resume in a structured way.
+        """
+    elif doc_type == "cover_letter":
+        prompt = f"""
+        You are an expert cover letter writer. Create a professional cover letter in Markdown format for the following 
+        individual:
+
+        **{name}**  
+        {email}  
+        {phone}  
+        {github_linkedin}  
+
+        **{company_name}**  
+        {job_title}  
+        {job_location}  
+
+        Dear Hiring Manager,
+
+        I am excited to apply for the {job_title} position at {company_name}. With my background in {classes}, I am 
+        eager to bring my expertise to your team. My experience includes:
+
+        **Projects & Experience:**
+        {projects}
+
+        **Additional Information:**
+        {other}
+
+        I would love the opportunity to discuss how my skills can contribute to {company_name}. Thank you for your time
+        and consideration.
+
+        Best regards,  
+        **{name}**
+        """
+    else:
+        raise ValueError("Invalid document type. Use 'resume' or 'cover_letter'.")
+
+    # Generate AI response
+    response = chat_session.send_message(prompt)
+    markdown_content = response.text.strip()
+
+    # Convert markdown to HTML
+    # I used this method due to macOS issues for pdf conversions
+    html_content = markdown.markdown(markdown_content)
+
+    # Define output PDF file path
+    output_dir = "generated_pdfs"
+    os.makedirs(output_dir, exist_ok=True)
+    pdf_filename = os.path.join(output_dir, f"{name}_{doc_type}.pdf")
+
+    # Convert HTML to PDF using xhtml2pdf
+    with open(pdf_filename, 'wb') as pdf_file:
+        pisa.CreatePDF(html_content, dest=pdf_file)
+
+    return pdf_filename
+
+
 if __name__ == "__main__":
-    # new code starts
-    create_database()  # Ensure the database exists
+    create_database()  # Check the database exists
 
     # import JSON files
     import_json_data("rapid_jobs2.json", "file1")
     import_json_data("rapidResults.json", "file2")
 
     print("Database update complete! No duplicate jobs inserted.")
-    # new code ends
-
-    JOB_DESCRIPTION = (
-        "Links Technology Solutions is looking for a Software Developer to join their team! "
-        "This role requires a strong foundation in .NET development with a focus on building and "
-        "maintaining robust applications within an Agile team environment. "
-        "Your Day-to-Day: "
-        "• Design, develop, test, and maintain multiple applications using Microsoft .NET "
-        "  and related technologies. "
-        "• Participate in daily standups."
-    )
-
-    PERSONAL_DESCRIPTION = """\
-    My name is Joey, and I'm set to graduate in Spring 2025 with a Bachelor's degree in Computer Science 
-    from Bridgewater State University, Bridgewater, MA. My skills include Java programming, 
-    full-stack web development, experience with databases, and knowledge of computer networks 
-    and operating systems. I’m currently learning about computer forensics, data mining, and modern AI systems.
-
-    I have no hands-on experience in the field but I’m eager to enter the industry and apply my skills. 
-    In terms of projects, I developed a full-stack web authentication system using HTML, Bootstrap, 
-    JavaScript, Node.js, and PostgresSQL to store user information.
-
-    Additionally, I built a database containing all 151 original Pokémon, along with a front-end web 
-    application to display their statistics clearly. Lastly, I created a file transfer protocol (FTP) 
-    program in Java that enables a client and server to communicate and transfer files back and forth.
-
-    I am passionate about technology and excited to take my first steps into the software engineering industry.
-    """
-
-    resume_text = create_resume(JOB_DESCRIPTION, PERSONAL_DESCRIPTION)
-    save_resume(resume_text)
-    print(resume_text)

@@ -3,6 +3,7 @@
 import sqlite3
 import PySimpleGUI as sg
 from json_database import create_user_profiles_table
+from main import generate_resume_and_cover_letter
 
 DB_NAME = "jobs.db"
 
@@ -32,19 +33,23 @@ def save_user(values):
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
 
-    # checks that the user_profiles table exists before inserting data
+    # Ensure the user_profiles table exists
     create_user_profiles_table()
 
     cursor.execute('''
         INSERT OR REPLACE INTO user_profiles (name, email, phone, github_linkedin, projects, classes, other)
         VALUES (?, ?, ?, ?, ?, ?, ?)
     ''', (
-        values["-NAME-"], values["-EMAIL-"], values["-PHONE-"],
-        values["-GITHUB-"], values["-PROJECTS-"], values["-CLASSES-"], values["-OTHER-"]
+        values.get("-NAME-", ""), values.get("-EMAIL-", ""), values.get("-PHONE-", ""),
+        values.get("-GITHUB-", ""), values.get("-PROJECTS-", ""), values.get("-CLASSES-", ""),
+        values.get("-OTHER-", "")
     ))
 
     conn.commit()
     conn.close()
+
+    if __name__ == "__main__":  # Only show the popup when running GUI
+        sg.popup("User profile saved.", title="Success")
 
 
 def get_user_profiles():
@@ -58,7 +63,7 @@ def get_user_profiles():
 
 
 def load_user_profile(selected_name):
-    """gets a user's saved profile info when an account is chosen."""
+    """gets a user's saved profile info when a profile is chosen."""
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM user_profiles WHERE name=?", (selected_name,))
@@ -69,11 +74,14 @@ def load_user_profile(selected_name):
 
 # Convert job data for displaying in the GUI
 job_headers = ["Title", "Company", "Location"]
-job_data = [[job[1], job[2], job[3]] for job in get_jobs()]
+job_data = get_jobs()
+formatted_job_data = [[job[1], job[2], job[3]] for job in job_data]
 
 # GUI theme
 sg.theme("DarkBlue")
 
+
+# pylint: disable=too-many-locals
 
 def open_gui():
     """opens PySimpleGUI to display job listings and user profiles."""
@@ -82,7 +90,7 @@ def open_gui():
     job_list_column = [
         [sg.Text("Job Listings", font=("Helvetica", 14, "bold"))],
         [sg.Table(
-            values=job_data,
+            values=formatted_job_data,
             headings=job_headers,
             auto_size_columns=False,
             col_widths=[30, 20, 20],
@@ -115,7 +123,10 @@ def open_gui():
         [sg.Text("Projects:"), sg.Multiline(size=(40, 3), key="-PROJECTS-")],
         [sg.Text("Classes:"), sg.Multiline(size=(40, 3), key="-CLASSES-")],
         [sg.Text("Other:"), sg.Multiline(size=(40, 3), key="-OTHER-")],
-        [sg.Button("Save User Info", size=(15, 1)), sg.Button("Exit", size=(10, 1))]
+        [sg.Button("Save User Info", size=(15, 1)),
+         sg.Button("Generate Resume", key="-GENERATE_RESUME-", size=(20, 1)),
+         sg.Button("Generate Cover Letter", key="-GENERATE_COVER_LETTER-", size=(20, 1)),
+         sg.Button("Exit", size=(10, 1))]
     ]
 
     # Full Layout
@@ -135,36 +146,8 @@ def open_gui():
         if event in {sg.WINDOW_CLOSED, "Exit"}:
             break
 
-        if event == "-JOB_TABLE-" and values["-JOB_TABLE-"]:
-            selected_row = values["-JOB_TABLE-"][0]
-            jobs = get_jobs()
-
-            if selected_row < len(jobs):
-                selected_job_id = jobs[selected_row][0]
-                job_details = get_job_info(selected_job_id)
-                if job_details:
-                    details_text = f"""
-Title: {job_details[1]}
-Company: {job_details[2]}
-Location: {job_details[3]}
-Employment Type: {job_details[4]}
-Date Posted: {job_details[5]}
-Salary Range: {job_details[6]} - {job_details[7]} {job_details[8]}
-Remote: {"Yes" if job_details[9] else "No"}
-
-Job Description:
-{job_details[10]}
-
-Job URL:
-{job_details[11]}
-                    """
-                    window["-JOB_DETAILS-"].update(details_text)
-
         if event == "Save User Info":
             save_user(values)
-            sg.popup("User Info Saved!", title="Success")
-
-            # Refresh the profile dropdown with the newly saved user info
             window["-PROFILE_DROPDOWN-"].update(values=get_user_profiles())
 
         if event == "-PROFILE_DROPDOWN-" and values["-PROFILE_DROPDOWN-"]:
@@ -172,19 +155,58 @@ Job URL:
             user_info = load_user_profile(selected_profile)
 
             if user_info:
-                window["-NAME-"].update(user_info[1])
-                window["-EMAIL-"].update(user_info[2])
-                window["-PHONE-"].update(user_info[3])
-                window["-GITHUB-"].update(user_info[4])
-                window["-PROJECTS-"].update(user_info[5])
-                window["-CLASSES-"].update(user_info[6])
-                window["-OTHER-"].update(user_info[7])
+                window["-NAME-"].update(user_info[1] if user_info[1] else "")
+                window["-EMAIL-"].update(user_info[2] if user_info[2] else "")
+                window["-PHONE-"].update(user_info[3] if user_info[3] else "")
+                window["-GITHUB-"].update(user_info[4] if user_info[4] else "")
+                window["-PROJECTS-"].update(user_info[5] if user_info[5] else "")
+                window["-CLASSES-"].update(user_info[6] if user_info[6] else "")
+                window["-OTHER-"].update(user_info[7] if user_info[7] else "")
+
+        # Fill in Job Details when a job is selected
+        if event == "-JOB_TABLE-":
+            if values["-JOB_TABLE-"]:
+                selected_index = values["-JOB_TABLE-"][0]
+                job_id = job_data[selected_index][0]
+                job_details = get_job_info(job_id)
+                if job_details:
+                    details_text = (
+                        f"ID: {job_details[0]}\n"
+                        f"Title: {job_details[1]}\n"
+                        f"Company: {job_details[2]}\n"
+                        f"Location: {job_details[3]}\n\n"
+                        f"Description:\n{job_details[10]}"
+                    )
+                    window["-JOB_DETAILS-"].update(details_text)
+                else:
+                    window["-JOB_DETAILS-"].update("Job details not found.")
+
+        if event in ("-GENERATE_RESUME-", "-GENERATE_COVER_LETTER-"):
+            selected_user = values["-PROFILE_DROPDOWN-"]
+            if not selected_user:
+                sg.popup("Please select a user.", title="Error")
+                continue
+
+            user_data = load_user_profile(selected_user)
+            selected_job = values["-JOB_TABLE-"]
+            if not selected_job:
+                sg.popup("Please select a job.", title="Error")
+                continue
+
+            job_details = get_job_info(job_data[selected_job[0]][0])
+
+            pdf_path = generate_resume_and_cover_letter(user_data, {
+                "title": job_details[1],
+                "company": job_details[2],
+                "location": job_details[3],
+                "description": job_details[10]
+            }, "resume" if event == "-GENERATE_RESUME-" else "cover_letter")
+
+            sg.popup(f"PDF generated: {pdf_path}", title="Success")
 
     # Close the window
     window.close()
 
 
-# GUI only runs if this script is executed
-# This prevents the GUI from launching during tests
 if __name__ == "__main__":
     open_gui()
