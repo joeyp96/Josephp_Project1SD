@@ -31,9 +31,18 @@ jobs:
         run: |
           pylint $(git ls-files '*.py')
 
-      - name: Run Unit Tests (Automated, No User Input)
+      - name: Run Unit Tests (Python 3.12)
+        if: matrix.python-version == '3.12'
         env:
           DISPLAY: ":99"
-          PYTHONUNBUFFERED: "1" 
+          PYTHONUNBUFFERED: "1"
+        run: |
+          python -m unittest test_code
+
+      - name: Run Unit Tests (Other Versions)
+        if: matrix.python-version != '3.12'
+        env:
+          DISPLAY: ":99"
+          PYTHONUNBUFFERED: "1"
         run: |
           python -m unittest discover -s tests -p "*.py" --buffer --verbose
